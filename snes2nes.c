@@ -64,21 +64,15 @@ uint16_t get_template_buttons()
 
 int main (void)
 {
-	set_bit(DDRD, 0); // Данные - на выход
-	unset_bit2(DDRD, 2, 3); // clock, strobe - на ввод
-/*
-	DDRB = 0; // Кнопки на ввод
-	PORTB = 0xFF; // Подтяжка кнопок
-	unset_bit3(DDRD, 5, 6, 7); // Кнопки на ввод
-	set_bit3(PORTD, 5, 6, 7); // Подтяжка кнопок
-*/
-	set_bit(DDRB, 2); // Светодиод на вывод	
+	set_bit(DDRD, 0); // Р”Р°РЅРЅС‹Рµ - РЅР° РІС‹С…РѕРґ
+	unset_bit2(DDRD, 2, 3); // clock, strobe - РЅР° РІРІРѕРґ
+	set_bit(DDRB, 2); // РЎРІРµС‚РѕРґРёРѕРґ РЅР° РІС‹РІРѕРґ	
 
-	set_bit2(MCUCR, ISC11, ISC10); // Прерывание при растущем strobe
-	set_bit2(MCUCR, ISC01, ISC00); // Прерывание при растущем  clock
-	set_bit(GICR, INT0); set_bit(GICR, INT1); // Активируем их
+	set_bit2(MCUCR, ISC11, ISC10); // РџСЂРµСЂС‹РІР°РЅРёРµ РїСЂРё СЂР°СЃС‚СѓС‰РµРј strobe
+	set_bit2(MCUCR, ISC01, ISC00); // РџСЂРµСЂС‹РІР°РЅРёРµ РїСЂРё СЂР°СЃС‚СѓС‰РµРј  clock
+	set_bit(GICR, INT0); set_bit(GICR, INT1); // РђРєС‚РёРІРёСЂСѓРµРј РёС…
 
-	sei(); // Глобальная активация прерываний
+	sei(); // Р“Р»РѕР±Р°Р»СЊРЅР°СЏ Р°РєС‚РёРІР°С†РёСЏ РїСЂРµСЂС‹РІР°РЅРёР№
 	
 	// Right, Left, Down, Up, Start, Select, B, A
 	init_snes_gamepad();
